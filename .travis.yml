@@ -25,8 +25,8 @@ env:
         #
         # User specific env variables
         - secure: "PohgBdEn5ffdIo3Y6sVs1pPyd1JzipWiWSWV5XUYo+hes3MaavUYVlELJmjPz7bsTV5haF/4NaL+YD6B3ZVVFbxmxZY9juuk0/3B2coWf0ckgl0z01l2GIdh0v6PdEoBDt7/k77ozg/M/CjRRSnIyb4NvdSWS2nkCwakGxy1FIMVlwYw02mUql9kRDocLP4BSkQ0aq1km1WyIXMOIFhzsyWDVjdgnrJQ97D0w0O/EsxAWHRkfXRFfkEKiytX812DExCA7ptgdPsxC8bZ6QApEKyp6jljbL6ndqajhNHyMSJWKGp9EjzQl+rzBUc2dHDeLSomNa824SOYcoyxf+k8rg7kNR9G6RgwALgLX9mOnojWqccJcLlpR6iz97pEYvVRybkfzFNGWTayqkvmKluGBKTTbRq9YAXeC4iizFPi3PMQqmgtlRBEs/L19F+KhvpX1TpcQQ+wMEIz+LdncqBD5m44eck89oq66PL7ER+Z8Lm5x/TL5XEVU7DPAFdC/9UbN7l/r+t3GVqGJX//NCKHEP8quvAUQmI2E1IjGlTFNdmPWPc+ieHNKDOxhgJ4fJKASFeY0PSxQy5yVrOxBCDVx3IQS3O4Zqupa1lQNqWnMo4qpKq0mv2DlJuz+b3NzVhn/aCZPCj1gd3XshCT4Vuekjr202barpJuvB3X9gULHeA="
-        # - GH_OWNER: "abraverm"
-        # - GH_PROJECT_NAME: "es-bugzilla-dashboard"
+        - GH_OWNER: abraverm
+        - GH_PROJECT_NAME: es-bugzilla-dashboard
         # This .travis.yml file instructs travis-ci.org to build your master branch using `yeoman build`
         # and deploy the output to your project's gh-pages branch.
 
@@ -37,7 +37,7 @@ before_script:
     - npm install -g grunt-cli bower
 script:
     # We want to gate on passing tests and a successful build
-    - bower install
+    - bower install --quiet
     - grunt
 after_success:
     # Any command that using GH_OAUTH_TOKEN must pipe the output to /dev/null to not expose your oauth token
@@ -50,6 +50,6 @@ after_success:
     - git add -f .
     - git config user.email "alexbmasis@gmail.com"
     - git config user.name "Alexander Braverman Masis"
-    - git commit -am "adding the yeoman build files to gh-pages [ci skip]"
+    - git commit -am "adding the yeoman build files to gh-pages [ci skip]" --quiet
     # Any command that using GH_OAUTH_TOKEN must pipe the output to /dev/null to not expose your oauth token
     - git push https://${GH_OAUTH_TOKEN}@github.com/${GH_OWNER}/${GH_PROJECT_NAME} HEAD:gh-pages > /dev/null 2>&1

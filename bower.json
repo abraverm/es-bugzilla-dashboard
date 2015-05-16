@@ -13,8 +13,7 @@
     "angular-bootstrap": "~0.13.0",
     "font-awesome-bower": "~4.3.0",
     "angular-google-chart": "~0.0.11",
-    "MathJax": "~2.5.3",
-    "mocha": "~2.2.5"
+    "MathJax": "~2.5.3"
   },
   "overrides": {
     "angular-bootstrap": {
