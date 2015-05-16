@@ -6,10 +6,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "elasticsearch": "~4.0.2",
     "angular": "1.3.15",
     "angular-route": "~1.3.15",
     "ocLazyLoad": "1.0.0-beta.2",
+    "elasticsearch": "~4.0.2",
     "angular-bootstrap": "~0.13.0",
     "font-awesome-bower": "~4.3.0",
     "angular-google-chart": "~0.0.11",
@@ -18,7 +18,11 @@
   "overrides": {
     "angular-bootstrap": {
       "main": ["ui-bootstrap-csp.css", "ui-bootstrap.min.js"]
-    }
+    },
+    "elasticsearch": { "main": ["elasticsearch.angular.min.js"] },
+    "angular": {"main": ["angular.min.js"] },
+    "angular-google-chart": { "main": [ "ng-google-chart.js" ]},
+    "angular-route": { "main": [ "angular-route.min.js" ]}
   },
   "resolutions": {
     "angular": "1.3.15"

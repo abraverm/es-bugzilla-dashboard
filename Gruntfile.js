@@ -16,8 +16,6 @@ module.exports = function (grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
-  grunt.loadNpmTasks('grunt-bower-task');
-
   // Configurable paths
   var config = {
     app: 'app',
@@ -123,22 +121,6 @@ module.exports = function (grunt) {
       server: '.tmp'
     },
 
-    // Run Bower install to get all libraries
-    bower: {
-      install: {
-       //just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
-        options: {
-        targetDir: 'bower_components',
-        layout: 'byType',
-        install: true,
-        verbose: true,
-        cleanTargetDir: false,
-        cleanBowerDir: false,
-        bowerOptions: {}
-        }
-      }
-    },
-
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
@@ -183,6 +165,7 @@ module.exports = function (grunt) {
       app: {
         src: ['<%= config.app %>/index.html'],
         options: {
+          directory: '<%= config.app %>/lib',
           exclude: [ /mocha/ ],
           dependencies: true,
           devDependencies: true
@@ -307,12 +290,7 @@ module.exports = function (grunt) {
           dot: true,
           cwd: '<%= config.app %>',
           dest: '<%= config.dist %>',
-          src: [
-            '*.{ico,png,txt}',
-            'images/{,*/}*.webp',
-            '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
-          ]
+          src: [ 'components/**', 'app.js', 'lib/**', 'index.html' ]
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
           dest: '<%= config.dist %>/.htaccess'
@@ -384,14 +362,13 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'bower:install',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
     'concat:generated',
     'cssmin:generated',
-    'uglify:generated',
+    //'uglify:generated',
     'copy:dist',
     'rev',
     'usemin',
