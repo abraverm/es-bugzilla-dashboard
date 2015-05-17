@@ -36,12 +36,12 @@ app.config(function($ocLazyLoadProvider, config) {
         modules: [
             {
                 name: 'elasticsearch',
-                files: ['bower_components/elasticsearch/elasticsearch.angular.min.js'],
+                files: ['lib/elasticsearch/elasticsearch.angular.min.js'],
                 cache: true
             },
             {
                 name: 'ng-google-chart',
-                files: [ 'bower_components/angular-google-chart/ng-google-chart.js'  ],
+                files: [ 'lib/angular-google-chart/ng-google-chart.js'  ],
                 cache: true
             },
             {
