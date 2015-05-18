@@ -47,7 +47,7 @@ after_success:
     - git rm -r . --quiet
     - cp -R ../dist/* .
     - cp ../dist/.* .
-    - git add -f . --quite
+    - git add -f .
     - git config user.email "alexbmasis@gmail.com"
     - git config user.name "Alexander Braverman Masis"
     - git commit -am "adding the yeoman build files to gh-pages [ci skip]" --quiet
