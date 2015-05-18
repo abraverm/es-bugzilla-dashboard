@@ -1,0 +1,113 @@
+<div class="col-sm-1">
+    <div ng-include="'components/shared/sidebar.html'"></div>
+</div>
+<div class="col-sm-11">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 panel panel-info" ng-controller="bugzilla.graphAllBugs">
+                <h2 class="panel-heading">All Bugs</h2>
+                <div class="panel-body" google-chart chart="graphAllBugs"></div>
+            </div>
+        </div>
+        <div class="row panel panel-info">
+            <div class="col-sm-4 panel panel-info" >
+                <h2 class="panel-heading">Defect Detection Percentage</h2>
+                <p class="panel-body">The defect detection percentage (DDP) gives a measure of the testing effectiveness.
+                    It is calculated as a ratio of defects found found prior to release and after release by customers.
+                    You can also calculate DDP from sub-metrics:
+                    <ul>
+                        <li>Number of escaped defects</li>
+                        <li>Number of defects (at the moment of software version release)</li>
+                    </ul><br>
+
+                    <div class="alert alert-success" role="alert">
+                    For example, suppose that 90 defects were found during QA/testing stage and 20 defects were found by
+                    customers after the release. The DDP would be calculated as 90 divided by (90 + 20) = 81.8%
+                    </div>
+                </p>
+            </div>
+            <div class="col-sm-8" ng-controller="bugzilla.graphDDP">
+                <div google-chart chart="graphDDP"></div>
+                <span>
+                    `DDP=("Number of defects at the moment of software version release")/("Number of defects at the moment of software release + escaped defects found")`
+                </span>
+                {{total}}
+            </div>
+        </div>
+        <div class="row panel panel-info">
+            <div class="col-sm-4 panel panel-info">
+                <h2 class="panel-heading">Defect Removal Efficiency</h2>
+                <p class="panel-body">
+                    The defect removal efficiency (DRE) gives a measure of the development team ability to remove
+                    defects prior to release. It is calculated as a ratio of defects resolved to total number of defects
+                    found. It is typically measured prior and at the moment of release.
+                </p>
+                <div class="alert alert-success">
+                    <p>
+                        For example, suppose that 100 defects were found during QA/testing stage and 84 defects were
+                        resolved by the development team at the moment of measurement.
+                        The DRE would be calculated as 84 divided by 100 = 84%
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-8" ng-controller="bugzilla.metricDRE">
+                <div google-chart chart="metricDRE"></div>
+                <span>
+                    `DRE = ("Number of defects resolved by the development team")/("total number of defects at the moment of measurement")`
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 panel panel-info">
+                <h2 class="panel-heading">Schedule Estimation Accuracy</h2>
+                <div class="panel-body"  ng-controller="bugzilla.metricSEA">
+                    <div google-chart chart="metricSEA"></div>
+                </div>
+                <p class="alert alert-success">
+                    <span style="font-size: 70%">
+                        `SEA=("Actual project duration")/("Estimated project duration")`
+                    </span>
+                </p>
+            </div>
+            <div class="col-sm-3 panel panel-info">
+                <h2 class="panel-heading">Total Released Defects</h2>
+                <div class="panel-body"  ng-controller="bugzilla.metricTRD">
+                    <div google-chart chart="metricTRD"></div>
+                </div>
+                <p class="alert alert-success">
+                    <span style="font-size: 70%">
+                        `"TRD"_{"total"}={"Number of released defects"}/{"Assembly-equivalent total source size"}`
+                    </span>
+                </p>
+            </div>
+            <div class="col-sm-3 panel panel-info">
+                <h2 class="panel-heading">Customer-Found Defects</h2>
+                <div class="panel-body"  ng-controller="bugzilla.metricCFD">
+                    <div google-chart chart="metricCFD"></div>
+                </div>
+                <p class="alert alert-success">
+                    <span style="font-size: 70%">
+                        `"CFD"_{"total"}={"Number of customer-found defects"}/{"Assembly-equivalent total source size"}`
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="row panel panel-info">
+            <div class="col-sm-4 panel panel-info">
+                <h2 class="panel-heading">Test Case Efficiency</h2>
+                <p class="panel-body">
+                    To know the efficiency of the test cases that are being executed in the testing phase.
+                    The quality of the test cases can be determined.
+                </p>
+                <p class="alert alert-success">
+                   <span style="font-size: 70%">
+                        `"TCF"={"Number of defects detected"}/{"Number of test cases run"}*100`
+                    </span>
+                </p>
+            </div>
+            <div class="col-sm-8" ng-controller="bugzilla.graphTCE">
+                <div google-chart chart="graphTCE"></div>
+            </div>
+        </div>
+    </div>
+</div>
